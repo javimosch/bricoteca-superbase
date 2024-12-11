@@ -1,8 +1,5 @@
-import DeployButton from "@/components/deploy-button";
-import { EnvVarWarning } from "@/components/env-var-warning";
 import HeaderAuth from "@/components/header-auth";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
 import Link from "next/link";
@@ -14,8 +11,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "Plateforme Bricothèque Massif de Bauges",
+  description: "La manière la plus rapide de créer des applications avec Next.js et Supabase",
 };
 
 export default function RootLayout({
@@ -24,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className} suppressHydrationWarning>
+    <html lang="fr" className={GeistSans.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
@@ -37,12 +34,10 @@ export default function RootLayout({
               <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
                 <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
                   <div className="flex gap-5 items-center font-semibold">
-                    <Link href={"/"}>Next.js Supabase Starter</Link>
-                    <div className="flex items-center gap-2">
-                      <DeployButton />
-                    </div>
+                    <Link href={"/"}>Plateforme Bricothèque Massif de Bauges</Link>
+                   
                   </div>
-                  {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
+                  <HeaderAuth />
                 </div>
               </nav>
               <div className="flex flex-col gap-20 max-w-5xl p-5">
@@ -50,17 +45,22 @@ export default function RootLayout({
               </div>
 
               <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-                <p>
-                  Powered by{" "}
-                  <a
-                    href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-                    target="_blank"
-                    className="font-bold hover:underline"
-                    rel="noreferrer"
-                  >
-                    Supabase
-                  </a>
-                </p>
+                <div className="flex flex-col items-center gap-2">
+                  <Link href="/" className="font-bold hover:underline">
+                    Retour à l'accueil
+                  </Link>
+                  <p>
+                    Alimenté par{" "}
+                    <a
+                      href="https://enbauges.fr"
+                      target="_blank"
+                      className="font-bold hover:underline"
+                      rel="noreferrer"
+                    >
+                      enbauges.fr
+                    </a>
+                  </p>
+                </div>
                 <ThemeSwitcher />
               </footer>
             </div>
